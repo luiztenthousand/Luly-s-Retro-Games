@@ -1,0 +1,82 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+        Produtos | Luly`s Retro Games 
+{% endblock %}
+
+{% block content %}
+
+<div class="container my-4">
+    <h1>{{ titulo }}</h1>
+    <div class="row mt-4">
+        
+        <!-- MENU LATERAL DE CATEGORIAS -->
+        <div class="col-md-3 mb-4">
+            <div class="card retro-sidebar">
+                <div class="card-header retro-sidebar-header">
+                    <h5 class="mb-0">Categorias</h5>
+                </div>
+
+                <div class="list-group list-group-flush">
+
+                    <a href="{% url 'loja:produtos' %}"
+                    class="list-group-item retro-link all-products">
+                        Todos os Produtos
+                    </a>
+
+                    {% for categoria in categorias_principais %}
+
+                        <!-- Categoria Principal -->
+                        <a href="{% url 'loja:produtos_categoria' categoria.id %}"
+                        class="list-group-item retro-link categoria-principal">
+                            {{ categoria.nome }}
+                        </a>
+
+                        {% for subcategoria in categoria.subcategorias.all %}
+
+                            <!-- Subcategoria -->
+                            <a href="{% url 'loja:produtos_categoria' subcategoria.id %}"
+                            class="list-group-item retro-link subcategoria">
+                                {{ subcategoria.nome }}
+                            </a>
+
+                            {% for plataforma in subcategoria.subcategorias.all %}
+
+                                <!-- Plataforma -->
+                                <a href="{% url 'loja:produtos_categoria' plataforma.id %}"
+                                class="list-group-item retro-link plataforma">
+                                    {{ plataforma.nome }}
+                                </a>
+
+                            {% endfor %}
+
+                        {% endfor %}
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+        <!-- GRELHA DE PRODUTOS -->
+        <div class="col-md-9">
+            <div class="row">
+                {% for produto in produtos %}
+                    <div class="col-md-4 mb-4">
+                        <!-- Atenção à correção do caminho da pasta loja -->
+                        {% include 'loja/partials/produto_card.html' %}
+                    </div>
+                {% empty %}
+                    <div class="col-12">
+                        <div class="alert alert-warning">
+                            Nenhum produto encontrado nesta categoria.
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
