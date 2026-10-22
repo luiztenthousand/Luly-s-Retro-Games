@@ -11,6 +11,7 @@ class CategoriaAdmin(admin.ModelAdmin):
 @admin.register(Produto)
 class ProdutoAdmin(admin.ModelAdmin):
     list_display = ("nome", "categoria", "preco", "estoque", "data_cadastro")
+    list_editable = ("categoria", "preco", "estoque")
     search_fields = ("nome", "descricao")
     list_filter = ("categoria", "data_cadastro")
     ordering = ("-data_cadastro",)

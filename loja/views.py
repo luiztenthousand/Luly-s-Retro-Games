@@ -6,7 +6,7 @@ from .forms import ProdutoForm
 
 # --- INSTITUCIONAL ---
 def home(request):
-    produtos_do_banco = Produto.objects.all()[:4]
+    produtos_do_banco = Produto.objects.all()[:6]
     categorias_principais = Categoria.objects.filter(pai__isnull=True)
     
     contexto = {

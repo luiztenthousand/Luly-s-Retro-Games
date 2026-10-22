@@ -1,29 +1,36 @@
 {% extends "core/base.html" %}
-
+{% load static %}
 {% block content %}
 
 <div class="container py-5">
+    <div class="form-card">
+        <h1 class="form-title">Cadastrar produto</h1>
 
-    <h1 class="mb-4">
-        Cadastrar produto
-    </h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
 
-    <form method="post" enctype="multipart/form-data">
+            {% for field in form %}
+                <div class="mb-3">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    
+                    {% if field.help_text %}
+                        <small class="helptext">{{ field.help_text }}</small>
+                    {% endif %}
+                    
+                    {% if field.errors %}
+                        <div class="errorlist">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
 
-        {% csrf_token %}
-
-        {{ form.as_p }}
-
-        <button
-            type="submit"
-            class="btn btn-primary">
-
-            Salvar produto
-
-        </button>
-
-    </form>
-
+            <button type="submit" class="btn btn-salvar mt-3">
+                Salvar produto
+            </button>
+        </form>
+    </div>
 </div>
 
 {% endblock %}

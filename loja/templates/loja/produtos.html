@@ -26,31 +26,50 @@
 
                     {% for categoria in categorias_principais %}
 
-                        <!-- Categoria Principal -->
-                        <a href="{% url 'loja:produtos_categoria' categoria.id %}"
-                        class="list-group-item retro-link categoria-principal">
-                            {{ categoria.nome }}
-                        </a>
-
-                        {% for subcategoria in categoria.subcategorias.all %}
-
-                            <!-- Subcategoria -->
-                            <a href="{% url 'loja:produtos_categoria' subcategoria.id %}"
-                            class="list-group-item retro-link subcategoria">
-                                {{ subcategoria.nome }}
+                        <!-- Categoria Principal com Link e Botão de Expandir Separados -->
+                        <div class="list-group-item retro-link categoria-principal d-flex justify-content-between align-items-center p-0">
+                            <!-- Link principal da Categoria Mãe -->
+                            <a href="{% url 'loja:produtos_categoria' categoria.id %}" class="flex-grow-1 p-3 text-decoration-none">
+                                {{ categoria.nome }}
                             </a>
+                            
+                            <!-- Botão/Seta apenas para abrir/fechar o dropdown -->
+                            <a class="p-3 text-secondary text-decoration-none" 
+                               data-bs-toggle="collapse" 
+                               href="#categoria-{{ categoria.id }}" 
+                               role="button" 
+                               aria-expanded="false" 
+                               aria-controls="categoria-{{ categoria.id }}">
+                                <span class="dropdown-toggle"></span>
+                            </a>
+                        </div>
 
-                            {% for plataforma in subcategoria.subcategorias.all %}
+                        <!-- Container Colapsável das Filhas -->
+                        <div class="collapse" id="categoria-{{ categoria.id }}">
+                            <div class="list-group list-group-flush">
 
-                                <!-- Plataforma -->
-                                <a href="{% url 'loja:produtos_categoria' plataforma.id %}"
-                                class="list-group-item retro-link plataforma">
-                                    {{ plataforma.nome }}
-                                </a>
+                                {% for subcategoria in categoria.subcategorias.all %}
 
-                            {% endfor %}
+                                    <!-- Subcategoria -->
+                                    <a href="{% url 'loja:produtos_categoria' subcategoria.id %}"
+                                    class="list-group-item retro-link subcategoria">
+                                        {{ subcategoria.nome }}
+                                    </a>
 
-                        {% endfor %}
+                                    {% for plataforma in subcategoria.subcategorias.all %}
+
+                                        <!-- Plataforma -->
+                                        <a href="{% url 'loja:produtos_categoria' plataforma.id %}"
+                                        class="list-group-item retro-link plataforma ps-4">
+                                            {{ plataforma.nome }}
+                                        </a>
+
+                                    {% endfor %}
+
+                                {% endfor %}
+
+                            </div>
+                        </div>
 
                     {% endfor %}
 
@@ -63,7 +82,6 @@
             <div class="row">
                 {% for produto in produtos %}
                     <div class="col-md-4 mb-4">
-                        <!-- Atenção à correção do caminho da pasta loja -->
                         {% include 'loja/partials/produto_card.html' %}
                     </div>
                 {% empty %}
