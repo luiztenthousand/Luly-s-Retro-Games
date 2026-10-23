@@ -14,24 +14,24 @@
             Obrigado pela sua compra.
         </p>
 
-        <p>
+        <p class="destaque">
             Pedido:
             <strong>#{{ pedido.id }}</strong>
         </p>
 
-        <p>
+        <p class="destaque">
             Data:
             {{ pedido.data_criacao|date:"d/m/Y H:i" }}
         </p>
 
-        <p>
+        <p class="destaque">
             Total:
             <strong>
                 R$ {{ pedido.total|floatformat:2 }}
             </strong>
         </p>
 
-        <p>
+        <p class="destaque">
             Status:
             <span class="badge bg-warning text-dark">
                 {{ pedido.get_status_display }}
@@ -49,7 +49,7 @@
 
             <a
                 href="{% url 'loja:produtos' %}"
-                class="btn btn-outline-secondary"
+                class="cont-comp btn btn-outline-secondary"
             >
                 Continuar comprando
             </a>
