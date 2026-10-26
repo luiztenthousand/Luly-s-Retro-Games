@@ -1,5 +1,5 @@
 """
-ASGI config for tacns_games project.
+ASGI config for projeto final project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

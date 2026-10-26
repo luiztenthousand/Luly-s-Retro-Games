@@ -4,7 +4,7 @@
 {% for item in pedido.itens.all %}
     <div class="row align-items-center border-bottom py-3">
 
-        <!-- IMAGEM E NOME DO PRODUTO -->
+        /* Imagem e nome do produto */
         <div class="col-md-6 d-flex align-items-center gap-3 mb-3 mb-md-0">
 
             {% if item.produto.imagem %}
@@ -35,7 +35,8 @@
 
         </div>
 
-        <!-- PREÇO UNITÁRIO -->
+        /* Preço */
+
         <div class="col-md-3 mb-2 mb-md-0">
             <span class="destaque">Preço unitário</span>
             <div>
@@ -43,7 +44,7 @@
             </div>
         </div>
 
-        <!-- SUBTOTAL -->
+        /* Subtotal */
         <div class="col-md-3 text-md-end">
             <span class="destaque">Subtotal</span>
             <div class="fw-bold">

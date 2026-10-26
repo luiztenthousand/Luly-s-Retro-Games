@@ -1,27 +1,40 @@
 {% extends 'core/base.html' %}
 
 {% block title %}
-        Contato | Luly`s Retro Games 
+    Contato | Luly's Retro Games
 {% endblock %}
 
 {% block content %}
+<div class="container my-5">
+    <div class="form-card">
+        <h2 class="form-title">Entre em Contato</h2>
 
-    <form method="POST">
-        {% csrf_token %}
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="exampleInputEmail1">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">E-mail</label>
-            <input type="email" class="form-control" id="exampleInputemail@email.com">
-            <div id="emailHelp" class="form-text">Suas informações nunca serão compartilhadas</div>
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1"></label>
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
+        <form method="POST">
+            {% csrf_token %}
 
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" placeholder="Digite seu nome">
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail">
+                <div id="emailHelp" class="form-text">
+                    Suas informações nunca serão compartilhadas.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="mensagem" class="form-label">Mensagem</label>
+                <textarea class="form-control" id="mensagem" rows="5"
+                    placeholder="Digite sua mensagem"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+                Enviar Mensagem
+            </button>
+        </form>
+    </div>
+</div>
 {% endblock %}

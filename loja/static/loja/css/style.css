@@ -8,6 +8,7 @@
     --retro-dark: #0b0b1f;
     --retro-card: #16162d;
     --retro-light: #f5f5f5;
+    --retro-green: #00ff88;
 }
 
 html,
@@ -137,12 +138,58 @@ main {
         0 0 20px var(--retro-purple);
 }
 
+.btn-success {
+    background: #00cc66;
+    border: 2px solid #00ff88;
+    color: #fff;
+    font-weight: 600;
+
+    box-shadow:
+        0 0 5px #00ff88,
+        0 0 10px #00ff88,
+        0 0 15px rgba(0, 255, 136, 0.5);
+
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background: #00ff88;
+    border-color: #66ffb8;
+    color: #000;
+
+    box-shadow:
+        0 0 10px #00ff88,
+        0 0 20px #00ff88,
+        0 0 30px #00ff88;
+}
+
+.btn-success:focus,
+.btn-success:active {
+    background: #00e67a !important;
+    border-color: #66ffb8 !important;
+
+    box-shadow:
+        0 0 15px #00ff88,
+        0 0 30px #00ff88;
+}
 
 /* Titulos */
 
 h1, h2, h3, h4, h5, p, small, .destaque {
     color: var(--retro-yellow);
     text-shadow: 0 0 10px var(--retro-yellow);
+}
+
+#emailHelp {
+    color: var(--retro-yellow);
+    text-shadow: 0 0 10px var(--retro-yellow);
+}
+
+#emailHelp {
+    color: var(--retro-cyan);
+    font-size: 0.9rem;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+    margin-top: 5px;
 }
 
 /* Produtos */
@@ -305,9 +352,13 @@ footer {
 /* Texto Sobre */
 
 .sobre-loja {
-    background: linear-gradient(135deg, #120458, #1d0b7d, #2c0e8f);
     padding: 80px 20px;
     color: #fff;
+
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sobre-container {
@@ -318,6 +369,8 @@ footer {
     border-radius: 15px;
     border: 3px solid #ff00ff;
     box-shadow: 0 0 20px #ff00ff;
+
+    text-align: center;
 }
 
 .sobre-container h2 {
@@ -439,4 +492,78 @@ footer {
 }
 
 
+/* Meus pedidos */
+
+.table {
+    background: var(--retro-card);
+    border: 2px solid var(--retro-purple);
+    border-radius: 12px;
+    overflow: hidden;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(106, 0, 255, 0.4);
+}
+
+.table thead {
+    background: linear-gradient(90deg,
+        var(--retro-purple),
+        var(--retro-pink));
+}
+
+.table thead th {
+    color: var(--retro-yellow);
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px var(--retro-yellow);
+}
+
+.table tbody tr {
+    background: rgba(20, 20, 40, 0.9);
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:nth-child(even) {
+    background: rgba(35, 35, 65, 0.9);
+}
+
+.table tbody tr:hover {
+    background: rgba(0, 255, 255, 0.15);
+    box-shadow: inset 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.table tbody td {
+    color: #fff;
+    border-color: rgba(255,255,255,0.1);
+    vertical-align: middle;
+}
+
+.table tbody img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--retro-pink);
+    box-shadow: 0 0 10px var(--retro-pink);
+}
+
+.status-pedido {
+    background: rgba(255, 217, 0, 0.2);
+    color: var(--retro-yellow);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--retro-yellow);
+    font-weight: bold;
+}
+
+.pedidos-table tbody tr,
+.pedidos-table tbody td {
+    background: transparent !important;
+    color: #fff !important;
+}
+
+.pedidos-table {
+    --bs-table-bg: transparent;
+    --bs-table-striped-bg: rgba(35, 35, 65, 0.9);
+    --bs-table-hover-bg: rgba(0, 255, 255, 0.15);
+}
 

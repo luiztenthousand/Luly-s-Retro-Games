@@ -4,13 +4,13 @@ from django.contrib import messages
 from .models import Produto, Categoria
 from .forms import ProdutoForm
 
-# --- INSTITUCIONAL ---
+# Base
 def home(request):
     produtos_do_banco = Produto.objects.all()[:6]
     categorias_principais = Categoria.objects.filter(pai__isnull=True)
     
     contexto = {
-        "titulo": "Bem-vindo à Luly Stuff",
+        "titulo": "Bem-vindo à Luly`s Retro Games",
         "subtitulo": "A sua loja de jogos online!",
         "categorias_principais": categorias_principais,
         "produtos": produtos_do_banco
@@ -24,7 +24,7 @@ def contato(request):
     return render(request, "loja/contato.html", {"titulo": "Contato"})
 
 
-# --- CATÁLOGO & PRODUTOS ---
+# Catalogo/Produtos
 def produtos(request):
     produtos = Produto.objects.all()
     categorias_principais = Categoria.objects.filter(pai__isnull=True)
@@ -80,7 +80,7 @@ def produtos_esgotados(request):
     return render(request, "loja/produtos.html", {"produtos": produtos, "titulo": "Produtos Esgotados"})
 
 
-# --- OPERAÇÕES CRUD ---
+# CRUD
 @login_required
 def produto_novo(request):
     if request.method == "POST":

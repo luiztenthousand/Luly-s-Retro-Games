@@ -12,7 +12,7 @@
 
     <div class="row">
 
-        <!-- PRODUTOS -->
+
         <div class="col-lg-8">
 
             {% for item in produtos %}
@@ -23,7 +23,6 @@
 
                     <div class="row align-items-center">
 
-                        <!-- IMAGEM -->
                         <div class="col-md-2">
 
                             {% if item.produto.imagem %}
@@ -37,7 +36,6 @@
 
                         </div>
 
-                        <!-- PRODUTO -->
                         <div class="col-md-4">
 
                             <h5>
@@ -50,13 +48,13 @@
 
                         </div>
 
-                        <!-- QUANTIDADE -->
+
                         <div class="col-md-2 text-center">
 
                             <small class="d-block mb-2">
                                 Quantidade
                             </small>
-
+                            
                             <div class="d-inline-flex align-items-center border rounded">
 
                                 <a
@@ -81,7 +79,6 @@
 
                         </div>
 
-                        <!-- SUBTOTAL -->
                         <div class="col-md-3 text-end">
 
                             <small class="d-block">
@@ -112,7 +109,6 @@
         </div>
 
 
-        <!-- TOTAL -->
         <div class="col-lg-4">
 
             <div class="card shadow-sm">
@@ -146,7 +142,6 @@
 
     {% else %}
 
-    <!-- CARRINHO VAZIO -->
     <div class="alert alert-info">
 
         Seu carrinho está vazio.
