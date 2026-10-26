@@ -11,7 +11,7 @@ def home(request):
     
     contexto = {
         "titulo": "Bem-vindo à Luly`s Retro Games",
-        "subtitulo": "A sua loja de jogos online!",
+        "subtitulo": "A sua loja de jogos retro!",
         "categorias_principais": categorias_principais,
         "produtos": produtos_do_banco
     }
